@@ -1,0 +1,16 @@
+.input {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-lightGray); /* Borda cinza clara */
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body);
+    color: var(--color-darkGray); /* Cor do texto */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: var(--color-primary); /* Borda laranja no foco */
+    box-shadow: 0 0 4px rgba(233, 87, 57, 0.3); /* Sombra suave no foco */
+  }

@@ -1,0 +1,43 @@
+.button {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: 4px; /* Arredondamento dos botões */
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-regular); /* Peso padrão */
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+    color: var(--color-white); /* Cor padrão do texto */
+  }
+  
+  .primary {
+    background-color: var(--color-primary);
+  }
+  
+  .primary:hover {
+    background-color: #D34D31; /* Exemplo de hover mais escuro */
+  }
+  
+  .secondary {
+    background-color: var(--color-secondary);
+  }
+  
+  .secondary:hover {
+    background-color: #219653; /* Exemplo de hover mais escuro */
+  }
+  
+  .tertiary {
+    background-color: var(--color-tertiary);
+  }
+  
+  .tertiary:hover {
+    background-color: #233343; /* Exemplo de hover mais escuro */
+  }
+  
+  .inactive {
+    background-color: var(--color-inactive);
+    cursor: default;
+  }
+  
+  .inactive:hover {
+    background-color: var(--color-inactive); /* Sem alteração no hover */
+  }

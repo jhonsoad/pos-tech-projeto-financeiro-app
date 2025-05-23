@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { generateCssVariables } from "@/design-system/utils/generateCssVariables";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,11 +12,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Geração das variáveis CSS no lado do servidor
+  const cssVariables = generateCssVariables();
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        {/*
+          Aqui estamos injetando as variáveis CSS geradas dinamicamente
+          no <head> do documento como uma tag <style>.
+          Isso garante que elas estejam disponíveis globalmente para todos os CSS.
+        */}
+        <style dangerouslySetInnerHTML={{ __html: cssVariables }} />
+      </head>
+      <body>
         {children}
       </body>
     </html>
