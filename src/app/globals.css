@@ -7,11 +7,71 @@
   padding: 0;
 }
 
+html,
 body {
+  max-width: 100vw;
+  overflow-x: hidden;
   font-family: var(--font-primary);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
-  /* Se você tinha cores de fundo ou texto padrão, defina-as aqui */
-  /* background-color: var(--color-background); */
-  /* color: var(--color-text-primary); */
+  color: var(--color-text-dark);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:root {
+  /* Cores */
+  --color-primary: #004D61; /* azul mais escuro */
+  --color-gradient: linear-gradient(to right, #004D61, #FFFFFF); /* Gradiente da primária para branco */
+  --color-secondary: #FF5031; /* laranja */
+  --color-tertiary: #DEE9EA; /* cinza claro */
+  --color-quaternary: #F8F8F8; /* quase branco */
+  --color-quinary: #47A138; /* verde */
+  --color-senary: #E4EDE3; /* verde claro */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-text-dark: #333333; /* Cor comum para texto escuro */
+  --color-text-light: #666666; /* Cor comum para texto mais claro */
+
+  /* Breakpoints */
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-desktop: 1200px;
+
+  /* Espaçamentos */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Fontes */
+  --font-primary: 'Inter', sans-serif;
+
+  /* Tamanhos de Fonte */
+  --font-size-h6: 13px;
+  --font-size-body-small: 14px;
+  --font-size-body: 16px;
+  --font-size-body-large: 21px;
+  --font-size-h5: 27px;
+  --font-size-h4: 34px; /* Adicionado com base no design */
+  --font-size-hero-title: 40px; /* Chute para o título principal */
+
+  /* Pesos de Fonte */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Alturas de Linha (Line Heights) */
+  --line-height-body: 1.5;
+  --line-height-heading: 1.2;
+
+    /* Outros */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
 }

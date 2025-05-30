@@ -1,0 +1,45 @@
+/* src/components/dashboard/BalanceCard/BalanceCard.module.css */
+.card {
+  background-color: var(--color-primary); /* Azul escuro */
+  color: var(--color-white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  min-width: 300px;
+  flex-grow: 1; /* Permite que o card cresça */
+}
+
+.greeting {
+  font-size: var(--font-size-h5); /* H5 para o "Olá, Joana! :)" */
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xxs);
+}
+
+.date {
+  font-size: var(--font-size-body-small);
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.8;
+}
+
+.balanceInfo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.balanceLabel {
+  font-size: var(--font-size-body-large);
+  opacity: 0.8;
+}
+
+.balanceValue {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary); /* Laranja para o saldo */
+}
+
+.accountType {
+  font-size: var(--font-size-body);
+  opacity: 0.8;
+}

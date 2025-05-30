@@ -1,0 +1,94 @@
+/* src/app/Home.module.css */
+
+.heroSection {
+  background-color: var(--color-primary);
+  background-image: var(--color-gradient);
+  padding: var(--spacing-3xl) var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-3xl);
+  min-height: 500px;
+  color: var(--color-white);
+}
+
+.heroContent {
+  max-width: 500px;
+  text-align: left;
+}
+
+.heroTitle {
+  font-size: var(--font-size-hero-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--spacing-md);
+}
+
+.heroSubtitle {
+  font-size: var(--font-size-h5);
+  margin-bottom: var(--spacing-xl);
+}
+
+.heroIllustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Vantagens --- */
+.advantagesSection {
+  padding: var(--spacing-3xl) var(--spacing-lg);
+  text-align: center;
+  background-color: var(--color-white);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-3xl);
+}
+
+.advantagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-2xl);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Responsividade */
+@media (max-width: var(--breakpoint-tablet)) {
+  .heroSection {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .heroContent {
+    max-width: 100%;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .heroIllustration {
+    width: 80%;
+    height: auto;
+  }
+
+  .heroTitle {
+    font-size: var(--font-size-h4);
+  }
+
+  .heroSubtitle {
+    font-size: var(--font-size-body-large);
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-h5);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .advantagesGrid {
+    grid-template-columns: 1fr;
+  }
+}

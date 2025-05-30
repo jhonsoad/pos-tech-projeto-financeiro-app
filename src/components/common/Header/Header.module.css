@@ -1,0 +1,74 @@
+/* src/components/common/Header/Header.module.css */
+
+.header {
+  background-color: var(--color-primary); /* Azul escuro do topo */
+  padding: var(--spacing-md) 0;
+  color: var(--color-white);
+}
+
+.container {
+  max-width: 1200px; /* Largura máxima do conteúdo */
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg); /* Espaçamento lateral */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoNav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl); /* Espaçamento entre logo e nav */
+}
+
+.nav a {
+  margin-right: var(--spacing-xl);
+  font-weight: var(--font-weight-medium);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav a:last-child {
+  margin-right: 0;
+}
+
+.nav a:hover {
+  opacity: 0.8;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+/* Estilos específicos para botões no header se necessário */
+.actions :global(.button.outline) { /* Usa :global() para estilizar o botão global */
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.actions :global(.button.outline:hover) {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+@media (max-width: var(--breakpoint-tablet)) {
+  .logoNav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .nav {
+    display: none; /* Poderia ser um menu hamburger */
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}

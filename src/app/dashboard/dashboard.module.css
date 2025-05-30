@@ -1,0 +1,125 @@
+/* src/app/dashboard/dashboard.module.css */
+.dashboardLayout {
+  display: flex;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height)); /* Ajuste para preencher a tela */
+  background-color: var(--color-quaternary); /* Fundo quase branco */
+}
+
+.mainContent {
+  flex-grow: 1; /* Ocupa o restante do espaço */
+  padding: var(--spacing-xl) var(--spacing-2xl); /* Preenchimento geral */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: flex-end; /* Alinha o nome do usuário e ícone à direita */
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-tertiary); /* Linha divisória fina */
+  gap: var(--spacing-md);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-dark);
+}
+
+.userIcon {
+  /* Estilos para o círculo do ícone do usuário */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-senary); /* Um fundo para o ícone */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 colunas, responsivas */
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.newTransactionSection {
+  display: flex;
+  gap: var(--spacing-2xl);
+  align-items: flex-start; /* Alinha itens ao topo */
+  position: relative; /* Para posicionar o background */
+}
+
+.patternBackground {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px; /* Largura do padrão */
+  height: 300px; /* Altura do padrão */
+  background-image: linear-gradient(45deg, var(--color-senary) 25%, transparent 25%),
+                    linear-gradient(-45deg, var(--color-senary) 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, var(--color-senary) 75%),
+                    linear-gradient(-45deg, transparent 75%, var(--color-senary) 75%);
+  background-size: var(--spacing-md) var(--spacing-md); /* Tamanho dos quadrados */
+  background-position: 0 0, 0 var(--spacing-md), var(--spacing-md) -var(--spacing-md), -var(--spacing-md) 0;
+  opacity: 0.5; /* Suaviza o padrão */
+  z-index: 0; /* Coloca atrás do formulário */
+}
+
+/* Em telas menores */
+@media (max-width: var(--breakpoint-tablet)) {
+  .dashboardLayout {
+    flex-direction: column; /* Sidebar e conteúdo principal em coluna */
+  }
+
+  .sidebar {
+    width: 100%; /* Sidebar ocupa toda a largura */
+    border-right: none;
+    border-bottom: 1px solid var(--color-tertiary);
+    padding: var(--spacing-md);
+  }
+
+  .sidebar ul {
+    display: flex; /* Links da sidebar em linha */
+    justify-content: space-around;
+  }
+
+  .sidebar li {
+    margin-bottom: 0;
+  }
+
+  .sidebar a {
+    padding: var(--spacing-xs);
+    text-align: center;
+  }
+
+  .mainContent {
+    padding: var(--spacing-md);
+    gap: var(--spacing-xl);
+  }
+
+  .dashboardHeader {
+    justify-content: center; /* Centraliza o cabeçalho em mobile */
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr; /* Uma coluna em mobile */
+    gap: var(--spacing-xl);
+  }
+
+  .newTransactionSection {
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .patternBackground {
+    display: none; /* Esconde o padrão em mobile para simplificar */
+  }
+}
+
+/* Ajustes de variáveis para o layout.tsx */
+/* Se você quiser definir --header-height e --footer-height no globals.css */
+:root {
+  --header-height: 80px; /* Exemplo de altura do Header */
+  --footer-height: 200px; /* Exemplo de altura do Footer */
+}

@@ -1,0 +1,76 @@
+/* src/components/common/Footer/Footer.module.css */
+
+.footer {
+  background-color: var(--color-tertiary); /* Cinza claro do footer */
+  padding: var(--spacing-3xl) 0;
+  color: var(--color-text-dark);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  display: flex;
+  justify-content: space-around; /* Distribui as colunas */
+  flex-wrap: wrap; /* Permite que as colunas quebrem em telas menores */
+  gap: var(--spacing-2xl);
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.columnTitle {
+  font-size: var(--font-size-body-large);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+}
+
+.footerColumn a,
+.footerColumn span {
+  font-size: var(--font-size-body);
+  color: var(--color-text-dark);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footerColumn a:hover {
+  color: var(--color-primary);
+}
+
+.developedBy {
+  align-items: flex-end; /* Alinha o conteúdo à direita */
+}
+
+.developedBy img {
+  margin-bottom: var(--spacing-md);
+}
+
+.socialIcons {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.socialIcons img {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(93%) saturate(301%) hue-rotate(167deg) brightness(97%) contrast(98%); /* Cor dos ícones para combinar com primary */
+}
+
+@media (max-width: var(--breakpoint-tablet)) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+  }
+
+  .footerColumn {
+    width: 100%; /* Ocupa a largura total */
+  }
+
+  .developedBy {
+    align-items: flex-start; /* Alinha à esquerda em mobile */
+  }
+}
