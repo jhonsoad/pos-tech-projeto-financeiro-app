@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 /* Reset CSS */
 *, *::before, *::after {
@@ -23,7 +23,7 @@ a {
 :root {
   /* Cores */
   --color-primary: #004D61; /* azul mais escuro */
-  --color-gradient: linear-gradient(to right, #004D61, #FFFFFF); /* Gradiente da primária para branco */
+  --color-gradient: linear-gradient(to bottom, #004D61, #FFFFFF); /* Gradiente da primária para branco */
   --color-secondary: #FF5031; /* laranja */
   --color-tertiary: #DEE9EA; /* cinza claro */
   --color-quaternary: #F8F8F8; /* quase branco */
@@ -35,9 +35,9 @@ a {
   --color-text-light: #666666; /* Cor comum para texto mais claro */
 
   /* Breakpoints */
-  --breakpoint-mobile: 768px;
-  --breakpoint-tablet: 1024px;
-  --breakpoint-desktop: 1200px;
+  --breakpoint-mobile: 360px;
+  --breakpoint-tablet: 720px;
+  --breakpoint-desktop: 1920px;
 
   /* Espaçamentos */
   --spacing-xxs: 4px;
@@ -53,22 +53,22 @@ a {
   --font-primary: 'Inter', sans-serif;
 
   /* Tamanhos de Fonte */
-  --font-size-h6: 13px;
-  --font-size-body-small: 14px;
-  --font-size-body: 16px;
-  --font-size-body-large: 21px;
-  --font-size-h5: 27px;
-  --font-size-h4: 34px; /* Adicionado com base no design */
-  --font-size-hero-title: 40px; /* Chute para o título principal */
+  --font-size-text-small: 13px;
+  --font-size-text: 16px;
+  --font-size-text-large: 18px;
+  --font-size-title-h3: 20px;
+  --font-size-title-h2: 25px;
+  --font-size-title-h1: 28px;
+
 
   /* Pesos de Fonte */
   --font-weight-regular: 400;
-  --font-weight-medium: 500;
+  --font-weight-medium: 600;
   --font-weight-bold: 700;
 
   /* Alturas de Linha (Line Heights) */
-  --line-height-body: 1.5;
-  --line-height-heading: 1.2;
+  --line-height-body: 100%;
+  --line-height-heading: 120%;
 
     /* Outros */
   --border-radius-sm: 4px;

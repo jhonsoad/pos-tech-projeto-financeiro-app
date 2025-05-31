@@ -1,34 +1,35 @@
 // src/app/page.tsx
-// Esta página não precisa de 'use client' se não tiver interatividade
-// pois é Server Component por padrão no App Router.
+'use client'; // Importante: use o cliente side rendering para usar hooks
 
 import Image from 'next/image';
-import { Button } from '@/components/common/Button/Button';
-import { AdvantageCard } from '@/components/common/AdvantageCard/AdvantageCard';
-// Se os estilos da página Home forem muito específicos e não forem reutilizados,
-// você pode mantê-los como um CSS Module para essa página.
-import styles from './page.module.css'; // Estilos específicos da página Home
+import { Button, AdvantageCard } from '@/components/common/index';
+import styles from './page.module.css';
+import { useRouter } from 'next/navigation'; // Importe o useRouter
 
 export default function HomePage() {
+  const router = useRouter(); // Inicialize o router
+
+  const handleLoginRedirect = () => {
+    router.push('/dashboard'); // Redireciona para a página da dashboard
+  };
+
   return (
-    <main>
-      {/* Seção Hero */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Experimente mais liberdade no controle da sua vida financeira.</h1>
-          <p className={styles.heroSubtitle}>Crie sua conta com a gente!</p>
-          {/* O Button é um Client Component, mas pode ser usado aqui */}
-          <Button variant="secondary">Abrir minha conta</Button>
+    <main className={styles.homeMain}>
+      <section className={styles.homeSection}>
+        <div className={styles.homeContent}>
+          <h2 className={styles.homeTitle}>
+            Experimente mais liberdade no
+            controle da sua vida financeira.
+            Crie sua conta com a gente!
+          </h2>
         </div>
-        <div className={styles.heroIllustration}>
-          <Image
-            src="/illustration.svg"
-            alt="ByteBank Illustration"
-            width={500}
-            height={400}
-            priority
-          />
-        </div>
+        <Image
+          src="/illustration.svg"
+          alt="ByteBank Illustration"
+          width={661}
+          height={412}
+          priority
+        />
       </section>
 
       {/* Seção de Vantagens */}

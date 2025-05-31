@@ -1,15 +1,21 @@
 /* src/components/common/Header/Header.module.css */
 
 .header {
-  background-color: var(--color-primary); /* Azul escuro do topo */
+  background-color: var(--color-black); /* Azul escuro do topo - padrão */
   padding: var(--spacing-md) 0;
   color: var(--color-white);
 }
 
+/* Estilos para o cabeçalho quando o usuário está logado */
+.loggedInHeader {
+  background-color: var(--color-primary); /* Exemplo: uma cor diferente para a área logada */
+  /* Você pode ajustar outras propriedades aqui, como padding, etc. */
+}
+
 .container {
-  max-width: 1200px; /* Largura máxima do conteúdo */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-lg); /* Espaçamento lateral */
+  padding: 0 var(--spacing-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,13 +24,14 @@
 .logoNav {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xl); /* Espaçamento entre logo e nav */
+  gap: var(--spacing-xl);
 }
 
 .nav a {
   margin-right: var(--spacing-xl);
   font-weight: var(--font-weight-medium);
   transition: opacity 0.2s ease-in-out;
+  color: var(--color-quinary);
 }
 
 .nav a:last-child {
@@ -41,7 +48,7 @@
 }
 
 /* Estilos específicos para botões no header se necessário */
-.actions :global(.button.outline) { /* Usa :global() para estilizar o botão global */
+.actions :global(.button.outline) {
   border-color: var(--color-white);
   color: var(--color-white);
 }
@@ -50,6 +57,30 @@
   background-color: var(--color-white);
   color: var(--color-primary);
 }
+
+/* --- Estilos para a área logada --- */
+.loggedInContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm); /* Espaçamento entre nome e ícone */
+}
+
+.userName {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md);
+}
+
+.userIcon {
+  /* Estilos para o contêiner do ícone, se necessário */
+  display: flex; /* Para centralizar a imagem dentro, se tiver padding ou borda */
+  align-items: center;
+  justify-content: center;
+  /* Exemplo de estilo: */
+  /* border-radius: 50%; */
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  /* padding: 5px; */
+}
+
 
 @media (max-width: var(--breakpoint-tablet)) {
   .logoNav {
@@ -70,5 +101,12 @@
   .button {
     width: 100%;
     text-align: center;
+  }
+
+  /* Ajustes para a versão logada em mobile, se necessário */
+  .loggedInContent {
+    flex-direction: row; /* Ou column, dependendo do design mobile */
+    justify-content: space-between;
+    width: 100%;
   }
 }

@@ -15,12 +15,14 @@
 }
 
 .primary {
-  background-color: var(--color-primary);
+  background-color: var(--color-quinary);
   color: var(--color-white);
 }
 
 .primary:hover {
-  background-color: #003F50; /* Um tom ligeiramente mais escuro da primary */
+  background-color: transparent;
+  border: 1px solid var(--color-quinary);
+  color: var(--color-quinary);
 }
 
 .secondary {
@@ -34,12 +36,12 @@
 
 .outline {
   background-color: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid var(--color-quinary);
+  color: var(--color-quinary);
 }
 
 .outline:hover {
-  background-color: var(--color-primary);
+  background-color: var(--color-quinary);
   color: var(--color-white);
 }
 

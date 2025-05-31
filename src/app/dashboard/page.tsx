@@ -1,11 +1,6 @@
 // src/app/dashboard/page.tsx
-// Esta página é um Server Component por padrão.
-// Importar os componentes específicos do dashboard.
-import { Sidebar } from '@/components/dashboard/Sidebar/Sidebar';
-import { BalanceCard } from '@/components/dashboard/BalanceCard/BalanceCard';
-import { StatementCard } from '@/components/dashboard/StatementCard/StatementCard';
-import { NewTransactionForm } from '@/components/dashboard/NewTransactionForm/NewTransactionForm';
-import styles from './dashboard.module.css'; // Estilos específicos do Dashboard
+import { Sidebar, BalanceCard, StatementCard, NewTransactionForm } from '@/components/dashboard/index';
+import styles from './dashboard.module.css';
 import Image from 'next/image';
 
 export default function DashboardPage() {

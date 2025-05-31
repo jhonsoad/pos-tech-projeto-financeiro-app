@@ -26,21 +26,21 @@ export const Footer: React.FC = () => {
           <h3 className={styles.columnTitle}>Desenvolvido por Alura</h3>
           <Link href="/">
             <Image
-              src="/logo.svg" // Reutilizando a logo, ou adicione uma logo diferente para o footer se tiver
+              src="/logo-branco.svg" // Reutilizando a logo, ou adicione uma logo diferente para o footer se tiver
               alt="ByteBank Logo"
-              width={100}
-              height={25}
+              width={145}
+              height={32}
             />
           </Link>
           <div className={styles.socialIcons}>
             <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <Image src="/instagram.svg" alt="Instagram" width={24} height={24} />
+              <Image src="/instagram.svg" alt="Instagram" width={29} height={29} />
             </Link>
             <Link href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">
-              <Image src="/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
+              <Image src="/whatsapp.svg" alt="WhatsApp" width={29} height={29} />
             </Link>
             <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-              <Image src="/youtube.svg" alt="YouTube" width={24} height={24} />
+              <Image src="/youtube.svg" alt="YouTube" width={29} height={29} />
             </Link>
           </div>
         </div>

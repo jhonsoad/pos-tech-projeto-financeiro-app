@@ -13,7 +13,7 @@ export const AdvantageCard: React.FC<AdvantageCardProps> = ({ iconSrc, title, de
   return (
     <div className={styles.card}>
       <div className={styles.iconContainer}>
-        <Image src={iconSrc} alt={`${title} icon`} width={48} height={48} /> {/* Ajuste o tamanho conforme o ícone */}
+        <Image src={iconSrc} alt={`${title} icon`} width={73} height={56} /> {/* Ajuste o tamanho conforme o ícone */}
       </div>
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.description}>{description}</p>
