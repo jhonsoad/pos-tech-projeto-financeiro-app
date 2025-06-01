@@ -31,7 +31,6 @@ export const NewTransactionForm: React.FC = () => {
     <form className={styles.form} onSubmit={handleSubmit}>
       <h3 className={styles.title}>Nova transação</h3>
       <Dropdown
-        label="Tipo de transação"
         options={transactionOptions}
         value={transactionType}
         onChange={(e) => setTransactionType(e.target.value)}
@@ -44,7 +43,7 @@ export const NewTransactionForm: React.FC = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <Button type="submit" variant="primary" className={styles.submitButton}>
+      <Button type="submit" variant="secondary" className={styles.submitButton}>
         Concluir transação
       </Button>
     </form>

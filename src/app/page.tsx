@@ -1,17 +1,11 @@
 // src/app/page.tsx
-'use client'; // Importante: use o cliente side rendering para usar hooks
+'use client'
 
 import Image from 'next/image';
-import { Button, AdvantageCard } from '@/components/common/index';
+import { AdvantageCard } from '@/components/common/index';
 import styles from './page.module.css';
-import { useRouter } from 'next/navigation'; // Importe o useRouter
 
 export default function HomePage() {
-  const router = useRouter(); // Inicialize o router
-
-  const handleLoginRedirect = () => {
-    router.push('/dashboard'); // Redireciona para a página da dashboard
-  };
 
   return (
     <main className={styles.homeMain}>
@@ -31,8 +25,6 @@ export default function HomePage() {
           priority
         />
       </section>
-
-      {/* Seção de Vantagens */}
       <section className={styles.advantagesSection}>
         <h2 className={styles.sectionTitle}>Vantagens do nosso banco:</h2>
         <div className={styles.advantagesGrid}>

@@ -1,15 +1,14 @@
 /* src/components/common/Header/Header.module.css */
 
 .header {
-  background-color: var(--color-black); /* Azul escuro do topo - padrão */
-  padding: var(--spacing-md) 0;
-  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: var(--spacing-lg) 0;
 }
 
 /* Estilos para o cabeçalho quando o usuário está logado */
 .loggedInHeader {
-  background-color: var(--color-primary); /* Exemplo: uma cor diferente para a área logada */
-  /* Você pode ajustar outras propriedades aqui, como padding, etc. */
+  background-color: var(--color-bg-blue);
+  padding: var(--spacing-lg) 0;
 }
 
 .container {
@@ -55,30 +54,28 @@
 
 .actions :global(.button.outline:hover) {
   background-color: var(--color-white);
-  color: var(--color-primary);
+  color: var(--color-bg-blue);
 }
 
 /* --- Estilos para a área logada --- */
 .loggedInContent {
   display: flex;
+  justify-content: end;
   align-items: center;
-  gap: var(--spacing-sm); /* Espaçamento entre nome e ícone */
+  width: 100%;
+  gap: var(--spacing-3xl);
 }
 
 .userName {
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-text-small);
+  color: var(--color-white);
 }
 
 .userIcon {
-  /* Estilos para o contêiner do ícone, se necessário */
-  display: flex; /* Para centralizar a imagem dentro, se tiver padding ou borda */
+  display: flex;
   align-items: center;
   justify-content: center;
-  /* Exemplo de estilo: */
-  /* border-radius: 50%; */
-  /* background-color: rgba(255, 255, 255, 0.2); */
-  /* padding: 5px; */
 }
 
 
@@ -90,7 +87,7 @@
   }
 
   .nav {
-    display: none; /* Poderia ser um menu hamburger */
+    display: none;
   }
 
   .actions {
@@ -105,7 +102,7 @@
 
   /* Ajustes para a versão logada em mobile, se necessário */
   .loggedInContent {
-    flex-direction: row; /* Ou column, dependendo do design mobile */
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
   }

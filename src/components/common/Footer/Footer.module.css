@@ -32,7 +32,7 @@
 }
 
 .footerColumn a:hover {
-  color: var(--color-primary);
+  color: var(--color-bg-blue);
 }
 
 .developedBy {
@@ -57,10 +57,10 @@
   }
 
   .footerColumn {
-    width: 100%; /* Ocupa a largura total */
+    width: 100%;
   }
 
   .developedBy {
-    align-items: flex-start; /* Alinha à esquerda em mobile */
+    align-items: flex-start;
   }
 }

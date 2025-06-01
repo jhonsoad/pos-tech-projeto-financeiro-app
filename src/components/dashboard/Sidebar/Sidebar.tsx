@@ -1,5 +1,5 @@
 // src/components/dashboard/Sidebar/Sidebar.tsx
-'use client'; // Necessário por usar Link do 'next/link'
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -18,16 +18,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeLink = 'Inicio' }) => {
             Início
           </Link>
         </li>
+        <hr />
         <li>
           <Link href="/dashboard/transferencias" className={activeLink === 'Transferencias' ? styles.active : ''}>
             Transferências
           </Link>
         </li>
+        <hr />
         <li>
           <Link href="/dashboard/investimentos" className={activeLink === 'Investimentos' ? styles.active : ''}>
             Investimentos
           </Link>
         </li>
+        <hr />
         <li>
           <Link href="/dashboard/outros-servicos" className={activeLink === 'Outros servicos' ? styles.active : ''}>
             Outros serviços

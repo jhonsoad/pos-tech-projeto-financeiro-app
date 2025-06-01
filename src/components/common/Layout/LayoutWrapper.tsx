@@ -1,6 +1,5 @@
 // src/components/layout/LayoutWrapper.tsx
-'use client'; // <-- ESTE é o arquivo do Client Component
-
+'use client';
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import { Header } from '@/components/common/Header/Header';
@@ -12,14 +11,15 @@ interface LayoutWrapperProps {
 
 export const LayoutWrapper: React.FC<LayoutWrapperProps> = ({ children }) => {
   const pathname = usePathname();
-  const isLoggedIn = pathname === '/dashboard'; // Define isLoggedIn com base na rota
-  const userName = "Joana da Silva Oliveira"; // Nome mockado para a dashboard
+  const isLoggedIn = pathname === '/dashboard';
+  const userName = "Joana da Silva Oliveira";
+  const showFooter = pathname === '/';
 
   return (
-    <>
+    <div>
       <Header isLoggedIn={isLoggedIn} userName={userName} />
       {children}
-      <Footer />
-    </>
+      {showFooter && <Footer />}
+    </div>
   );
 };

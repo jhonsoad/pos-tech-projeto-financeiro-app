@@ -1,6 +1,6 @@
 /* src/components/dashboard/StatementCard/StatementCard.module.css */
 .card {
-  background-color: var(--color-white);
+  background-color: var(--color-bg-white);
   padding: var(--spacing-xl);
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-sm);
@@ -18,9 +18,9 @@
 }
 
 .title {
-  font-size: var(--font-size-h5);
+  font-size: var(--font-size-title-h2);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
+  color: var(--color-black);
 }
 
 .actions {
@@ -30,8 +30,6 @@
 
 .icon {
   cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s ease-in-out;
 }
 
 .icon:hover {
@@ -41,40 +39,51 @@
 .statementList {
   display: flex;
   flex-direction: column;
+  gap: var(--spacing-lg)
 }
 
 .statementItem {
-  display: grid;
-  grid-template-columns: 1fr auto auto; /* Tipo, Valor, Data */
-  gap: var(--spacing-sm);
-  align-items: center;
-  padding: var(--spacing-xs) 0;
-  border-bottom: 1px dashed var(--color-tertiary); /* Linha tracejada */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  hr {
+    background-color: #47A13880;
+    border: none;
+    height: 1px;
+    width: 180px;
+  }
 }
 
-.statementItem:last-child {
-  border-bottom: none;
-}
-
-.itemType {
-  font-size: var(--font-size-body);
-  color: var(--color-text-dark);
+.itemMonth {
+  font-size: var(--font-size-text-small);
+  color: var(--color-quinary);
   font-weight: var(--font-weight-medium);
 }
 
-.itemAmount {
-  font-size: var(--font-size-body);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-quinary); /* Verde para valores positivos (depósito) */
-  text-align: right;
+.itemsTypeDate {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemType {
+  font-size: var(--font-size-text);
+  color: black;
+  font-weight: var(--font-weight-regular);
+}
+
+.itemDate {
+  font-size: var(--font-size-text-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray);
 }
 
 .itemAmount.negative {
   color: var(--color-secondary); /* Laranja para valores negativos (transferência) */
 }
 
-.itemDate {
-  font-size: var(--font-size-body-small);
-  color: var(--color-text-light);
-  text-align: right;
+.itemAmount {
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-medium);
+  color: black
 }

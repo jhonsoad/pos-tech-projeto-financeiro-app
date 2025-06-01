@@ -1,7 +1,7 @@
 
 .homeMain {
-  background-color: var(--color-primary);
-  background-image: var(--color-gradient);
+  background-color: var(--color-bg-blue);
+  background-image: var(--color-bg-gradient);
   margin-bottom: 120px;
 }
 

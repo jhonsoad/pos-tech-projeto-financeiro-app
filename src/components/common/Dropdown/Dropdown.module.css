@@ -2,7 +2,7 @@
 .dropdownGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
 }
 
 .label {
@@ -13,24 +13,20 @@
 
 .dropdown {
   padding: var(--spacing-sm);
-  border: 1px solid var(--color-tertiary);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-body);
+  border: 1px solid var(--color-bg-blue);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-text);
   color: var(--color-text-dark);
-  background-color: var(--color-white);
   cursor: pointer;
+  width: 355px;
   appearance: none; /* Remove a seta padrão do navegador */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23666' d='M7.247 11.14c.063.13.237.13.3 0l3.856-4.667c.07-.086.042-.2-.057-.2H3.447c-.099 0-.127.114-.057.2z'/%3E%3C/svg%3E"); /* Adiciona uma seta personalizada */
+  background-image: url('/icon-seta.svg');
   background-repeat: no-repeat;
-  background-position: right var(--spacing-sm) center;
-  padding-right: var(--spacing-xl); /* Espaço para a seta */
-  transition: border-color 0.2s ease-in-out;
+  background-position: right var(--spacing-lg) center;
 }
 
 .dropdown:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--color-bg-blue);
   box-shadow: 0 0 0 2px rgba(0, 77, 97, 0.2);
 }

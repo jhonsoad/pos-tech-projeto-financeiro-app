@@ -20,7 +20,6 @@ export default function RootLayout({
       <head>
       </head>
       <body>
-        {/* Envolva os children com o seu novo Client Component */}
         <LayoutWrapper>
           {children}
         </LayoutWrapper>
