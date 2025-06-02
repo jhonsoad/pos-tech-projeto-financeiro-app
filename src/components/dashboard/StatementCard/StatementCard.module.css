@@ -23,7 +23,8 @@
   color: var(--color-black);
 }
 
-.actions {
+/* Icones do lado titulo do extrato */
+/* .actions {
   display: flex;
   gap: var(--spacing-sm);
 }
@@ -34,13 +35,20 @@
 
 .icon:hover {
   opacity: 1;
-}
+} */
 
 .statementList {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg)
 }
+
+.noTransactionsMessage {
+  text-align: center;
+  color: var(--color-gray-500);
+  padding: 20px;
+}
+
 
 .statementItem {
   display: flex;
@@ -78,12 +86,97 @@
   color: var(--color-gray);
 }
 
-.itemAmount.negative {
-  color: var(--color-secondary); /* Laranja para valores negativos (transferência) */
+.itemAmountActions {
+  display: flex;
 }
 
 .itemAmount {
   font-size: var(--font-size-text);
   font-weight: var(--font-weight-medium);
   color: black
+}
+
+.itemAmount.negative {
+  color: var(--color-secondary); /* Laranja para valores negativos (transferência) */
+}
+
+.itemActions {
+  display: flex;
+  gap:10px;
+  margin-left: auto;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.actionButton:hover {
+  background-color: var(--color-gray-100); /* Exemplo de cor de hover */
+}
+
+.actionButton:hover img {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+
+/* Modal Edição */
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: baseline;
+}
+
+/* Editar tipo de transação */
+/* .formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--color-text-primary);
+}
+
+.inputField {
+  padding: 10px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 4px;
+  font-size: 1rem;
+}*/
+
+.modalActions {
+  display: flex;
+  gap: 15px;
+  padding-top: 15px;
+}
+
+
+/* Modal Delete */
+
+.deleteConfirmationContent {
+  font-size: var(--font-size-text-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-dark);
+}
+
+.deleteConfirmationContent strong {
+  color: var(--color-text-primary);
+}
+
+.deleteConfirmationtext {
+  font-size: var(--font-size-text);
+  margin-bottom: var(--spacing-lg);
+}
+
+.deleteConfirmationContentText {
+  margin-bottom: var(--spacing-lg);
+}
+
+.deleteConfirmationContentText p {
+  margin-bottom: 10px;
 }

@@ -49,3 +49,12 @@
 .ghost:hover {
   background-color: rgba(0, 77, 97, 0.1);
 }
+
+.danger {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.danger:hover {
+  background-color: red;
+}

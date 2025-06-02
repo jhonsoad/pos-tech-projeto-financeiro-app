@@ -28,3 +28,9 @@
   width: 250px;
   margin-top: var(--spacing-md);
 }
+
+.errorMessage {
+  font-size: var(--font-size-title-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary);
+}

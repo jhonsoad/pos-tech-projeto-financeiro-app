@@ -1,28 +1,44 @@
 // src/components/dashboard/NewTransactionForm/NewTransactionForm.tsx
-'use client'; // Necessário por usar hooks de estado e Button/Dropdown/Input
+'use client';
 
 import React, { useState } from 'react';
-import { Input } from '@/components/common/Input/Input';
-import { Dropdown } from '@/components/common/Dropdown/Dropdown';
-import { Button } from '@/components/common/Button/Button';
+import { Input, Dropdown, Button } from '@/components/common/index';
 import styles from './NewTransactionForm.module.css';
+import { Transaction } from '@/app/dashboard/page';
 
-export const NewTransactionForm: React.FC = () => {
+interface NewTransactionFormProps {
+  onAddTransaction: (transaction: Omit<Transaction, 'id' | 'date'>) => void;
+}
+
+const transactionOptions = [
+  { label: 'Selecione...', value: '' },
+  { label: 'Depósito', value: 'Depósito' },
+  { label: 'Transferência', value: 'Transferência' },
+];
+
+export const NewTransactionForm: React.FC<NewTransactionFormProps> = ({ onAddTransaction }) => {
   const [transactionType, setTransactionType] = useState('');
   const [value, setValue] = useState('');
-
-  const transactionOptions = [
-    { value: '', label: 'Selecione o tipo de transação' },
-    { value: 'deposit', label: 'Depósito' },
-    { value: 'transfer', label: 'Transferência' },
-    { value: 'payment', label: 'Pagamento' },
-  ];
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Nova transação:', { transactionType, value });
-    // Lógica para enviar a transação (ex: para uma API)
-    alert(`Transação de ${transactionType} no valor de R$ ${value} realizada!`);
+    setErrorMessage(null);
+
+    if (!transactionType || !value) {
+      setErrorMessage('Por favor, selecione o tipo e insira o valor.');
+      return;
+    }
+
+    const amount = parseFloat(value.replace(',', '.'));
+
+    if (isNaN(amount)) { 
+      setErrorMessage('Por favor, insira um valor numérico válido.');
+      return;
+    }
+
+    const finalAmount = (transactionType === 'Transferência') ? -Math.abs(amount) : Math.abs(amount);
+    onAddTransaction({ type: transactionType, amount: finalAmount });
     setTransactionType('');
     setValue('');
   };
@@ -30,6 +46,7 @@ export const NewTransactionForm: React.FC = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h3 className={styles.title}>Nova transação</h3>
+      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
       <Dropdown
         options={transactionOptions}
         value={transactionType}
@@ -37,11 +54,14 @@ export const NewTransactionForm: React.FC = () => {
       />
       <Input
         label="Valor"
-        type="number"
+        type="text"
         step="0.01"
         placeholder="00,00"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => {
+          const sanitizedValue = e.target.value.replace(/[^0-9,.]/g, '');
+          setValue(sanitizedValue);
+        }}
       />
       <Button type="submit" variant="secondary" className={styles.submitButton}>
         Concluir transação

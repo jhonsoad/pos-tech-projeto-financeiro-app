@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Button.module.css';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 }
 
 export const Button: React.FC<ButtonProps> = ({ //: React.FC<ButtonProps>: Isso é um tipo do React que indica que Button é um "Functional Component" e que suas props são do tipo ButtonProps.React.FC
