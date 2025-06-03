@@ -8,7 +8,7 @@ import { loadTransactions, saveTransactions } from '@/utils/localStorage';
 export interface Transaction {
   id: string;
   type: string;
-  amount: number;
+  amount: number; // Pode ser positivo (receita/depósito) ou negativo (despesa/transferência)
   date: string;
 }
 
@@ -18,19 +18,27 @@ export default function DashboardPage() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [balance, setBalance] = useState<number>(INITIAL_BASE_BALANCE);
 
-  useEffect(() => {
-    const storedTransactions = loadTransactions();
-    setTransactions(storedTransactions);
-
-    const calculatedBalance = storedTransactions.reduce((acc: number, transaction: Transaction) => {
+  // Função para recalcular o saldo total com base nas transações
+  const calculateTotalBalance = useCallback((currentTransactions: Transaction[]) => {
+    const calculatedBalance = currentTransactions.reduce((acc: number, transaction: Transaction) => {
+      // transaction.amount já deve ter o sinal correto (positivo para entrada, negativo para saída)
       return acc + (transaction.amount || 0);
     }, INITIAL_BASE_BALANCE);
     setBalance(calculatedBalance);
-  }, []);
+  }, []); // Dependência vazia, pois não depende de nenhum estado ou prop que mude
 
+  // Efeito para carregar transações e calcular o balanço inicial
+  useEffect(() => {
+    const storedTransactions = loadTransactions();
+    setTransactions(storedTransactions);
+    calculateTotalBalance(storedTransactions); // Calcula o balanço na montagem inicial
+  }, [calculateTotalBalance]); // Depende de calculateTotalBalance
+
+  // Efeito para salvar transações sempre que a lista de transações mudar
   useEffect(() => {
     saveTransactions(transactions);
-  }, [transactions]);
+    calculateTotalBalance(transactions); // Recalcula o balanço sempre que as transações mudarem
+  }, [transactions, calculateTotalBalance]); // Depende de transactions e calculateTotalBalance
 
   const handleAddTransaction = useCallback((newTransaction: Omit<Transaction, 'id' | 'date'>) => {
     const transactionWithId: Transaction = {
@@ -39,31 +47,28 @@ export default function DashboardPage() {
       date: new Date().toLocaleDateString('pt-BR'),
     };
     setTransactions((prevTransactions) => {
-      return [transactionWithId, ...prevTransactions];
+      const updatedTransactions = [transactionWithId, ...prevTransactions];
+      return updatedTransactions;
     });
-    setBalance((prevBalance) => prevBalance + newTransaction.amount);
+    // O recalculo do balanço será feito pelo useEffect que monitora 'transactions'
   }, []);
 
   const handleDeleteTransaction = useCallback((id: string) => {
     setTransactions((prevTransactions) => {
-      const transactionToDelete = prevTransactions.find(t => t.id === id);
-      if (transactionToDelete) {
-        setBalance((prevBalance) => prevBalance - transactionToDelete.amount);
-      }
-      return prevTransactions.filter((transaction) => transaction.id !== id);
+      const updatedTransactions = prevTransactions.filter((transaction) => transaction.id !== id);
+      return updatedTransactions;
     });
+    // O recalculo do balanço será feito pelo useEffect que monitora 'transactions'
   }, []);
 
   const handleEditTransaction = useCallback((updatedTransaction: Transaction) => {
     setTransactions((prevTransactions) => {
-      const oldTransaction = prevTransactions.find(t => t.id === updatedTransaction.id);
-      if (oldTransaction) {
-        setBalance((prevBalance) => prevBalance - oldTransaction.amount + updatedTransaction.amount);
-      }
-      return prevTransactions.map((transaction) =>
+      const updatedTransactions = prevTransactions.map((transaction) =>
         transaction.id === updatedTransaction.id ? updatedTransaction : transaction
       );
+      return updatedTransactions;
     });
+    // O recalculo do balanço será feito pelo useEffect que monitora 'transactions'
   }, []);
 
   return (

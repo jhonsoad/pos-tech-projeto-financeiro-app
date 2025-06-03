@@ -16,10 +16,9 @@ export const StatementCard: React.FC<StatementCardProps> = ({ items, onDeleteTra
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [transactionToEdit, setTransactionToEdit] = useState<Transaction | null>(null);
   const [editAmount, setEditAmount] = useState('');
-  //const [editType, setEditType] = useState(''); // Opcional: para permitir editar o tipo se necessário
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [transactionToDeleteId, setTransactionToDeleteId] = useState<string | null>(null);
-  const [transactionToDeleteDetails, setTransactionToDeleteDetails] = useState<Transaction | null>(null); // Para mostrar detalhes na modal de exclusão
+  const [transactionToDeleteDetails, setTransactionToDeleteDetails] = useState<Transaction | null>(null);
 
   const capitalizeFirstLetter = (string: string) => {
     if (!string) return '';
@@ -45,13 +44,11 @@ export const StatementCard: React.FC<StatementCardProps> = ({ items, onDeleteTra
   const handleEditClick = (item: Transaction) => {
     setTransactionToEdit(item);
     setEditAmount(Math.abs(item.amount).toFixed(2).replace('.', ','));
-    //setEditType(item.type);
     setIsEditModalOpen(true);
   };
 
   const handleSaveEdit = (e: React.FormEvent) => {
     e.preventDefault();
-    const editType = transactionToEdit?.type;
     if (transactionToEdit && editAmount) {
       const newAmount = parseFloat(editAmount.replace(',', '.'));
 
@@ -60,11 +57,12 @@ export const StatementCard: React.FC<StatementCardProps> = ({ items, onDeleteTra
         return;
       }
 
-      const finalAmount = (editType === 'Transferência' && newAmount > 0) ? -newAmount : Math.abs(newAmount);
+      const finalAmount = transactionToEdit.type === 'Transferência' && newAmount > 0
+        ? -newAmount
+        : newAmount;
 
       const updatedTransaction: Transaction = {
         ...transactionToEdit,
-        //type: editType, // Atualiza o tipo, se for editável
         amount: finalAmount,
       };
       onEditTransaction(updatedTransaction);
@@ -76,15 +74,13 @@ export const StatementCard: React.FC<StatementCardProps> = ({ items, onDeleteTra
     setIsEditModalOpen(false);
     setTransactionToEdit(null);
     setEditAmount('');
-    //setEditType('');
   };
 
-    // NOVAS FUNÇÕES para gerenciar o modal de exclusão
   const handleDeleteClick = (id: string) => {
     const transactionFound = items.find(item => item.id === id);
     if (transactionFound) {
       setTransactionToDeleteId(id);
-      setTransactionToDeleteDetails(transactionFound); // Guarda os detalhes para exibir na modal
+      setTransactionToDeleteDetails(transactionFound);
       setIsDeleteModalOpen(true);
     }
   };
@@ -113,40 +109,40 @@ export const StatementCard: React.FC<StatementCardProps> = ({ items, onDeleteTra
       </div>
       <div className={styles.statementList}>
         {items.length === 0 ? (
-        <p className={styles.noTransactionsMessage}>Nenhuma transação encontrada.</p>
+          <p className={styles.noTransactionsMessage}>Nenhuma transação encontrada.</p>
         ) : (
           items.map((item) => (
-          <div key={item.id} className={styles.statementItem}>
-            <span className={styles.itemMonth}>{getMonthName(item.date)}</span>
-            <div className={styles.itemsTypeDate}>
-              <p className={styles.itemType}>{item.type}</p>
-              <p className={styles.itemDate}>{item.date}</p>
-            </div>
-            <div className={styles.itemAmountActions}>
-              <p className={`${styles.itemAmount} ${item.amount < 0 ? styles.negative : ''}`}>
-                {item.amount < 0 ? `- R$` : `R$`} {Math.abs(item.amount).toFixed(2).replace('.', ',')}
-              </p>
-              <div className={styles.itemActions}>
-                <button
-                  onClick={() => handleEditClick(item)}
-                  className={styles.actionButton}
-                  title="Editar transação"
-                >
-                  <Image src="/icon-edit.svg" alt="Editar" width={20} height={20} />
-                </button>
-                <button
-                  onClick={() => handleDeleteClick(item.id)}
-                  className={styles.actionButton}
-                  title="Deletar transação"
-                >
-                  <Image src="/icon-trash.svg" alt="Deletar" width={20} height={20} />
-                </button>
+            <div key={item.id} className={styles.statementItem}>
+              <span className={styles.itemMonth}>{getMonthName(item.date)}</span>
+              <div className={styles.itemsTypeDate}>
+                <p className={styles.itemType}>{item.type}</p>
+                <p className={styles.itemDate}>{item.date}</p>
               </div>
-            </div>
+              <div className={styles.itemAmountActions}>
+                <p className={`${styles.itemAmount} ${item.amount < 0 ? styles.negative : ''}`}>
+                  {item.amount < 0 ? `- R$` : `R$`} {Math.abs(item.amount).toFixed(2).replace('.', ',')}
+                </p>
+                <div className={styles.itemActions}>
+                  <button
+                    onClick={() => handleEditClick(item)}
+                    className={styles.actionButton}
+                    title="Editar transação"
+                  >
+                    <Image src="/icon-edit.svg" alt="Editar" width={20} height={20} />
+                  </button>
+                  <button
+                    onClick={() => handleDeleteClick(item.id)}
+                    className={styles.actionButton}
+                    title="Deletar transação"
+                  >
+                    <Image src="/icon-trash.svg" alt="Deletar" width={20} height={20} />
+                  </button>
+                </div>
+              </div>
 
-            <hr />
-          </div>
-        ))
+              <hr />
+            </div>
+          ))
         )}
       </div>
 
@@ -154,20 +150,6 @@ export const StatementCard: React.FC<StatementCardProps> = ({ items, onDeleteTra
       {isEditModalOpen && transactionToEdit && (
         <Modal isOpen={isEditModalOpen} onClose={handleCloseEditModal} title="Editar Transação">
           <form onSubmit={handleSaveEdit} className={styles.editForm}>
-            {/* Opcional: Se quiser permitir editar o tipo de transação */}
-            {/* <div className={styles.formGroup}>
-              <label htmlFor="editType">Tipo de Transação:</label>
-              <select
-                id="editType"
-                value={editType}
-                onChange={(e) => setEditType(e.target.value)}
-                className={styles.inputField}
-              >
-                <option value="Depósito">Depósito</option>
-                <option value="Transferência">Transferência</option>
-              </select>
-            </div> */}
-
             <Input
               label="Valor"
               type="text"
@@ -199,32 +181,31 @@ export const StatementCard: React.FC<StatementCardProps> = ({ items, onDeleteTra
               Você tem certeza que deseja deletar a seguinte transação?
             </p>
             <div className={styles.deleteConfirmationContentText}>
-            <p>
-              <strong>Tipo:</strong> {transactionToDeleteDetails.type}
-            </p>
-            <p>
-              <strong>Valor:</strong>{' '}
-              <span className={transactionToDeleteDetails.amount < 0 ? styles.negative : ''}>
-                {transactionToDeleteDetails.amount < 0 ? `- R$` : `R$`}{' '}
-                {Math.abs(transactionToDeleteDetails.amount).toFixed(2).replace('.', ',')}
-              </span>
-            </p>
-            <p>
-              <strong>Data:</strong> {transactionToDeleteDetails.date}
-            </p>
+              <p>
+                <strong>Tipo:</strong> {transactionToDeleteDetails.type}
+              </p>
+              <p>
+                <strong>Valor:</strong>{' '}
+                <span className={transactionToDeleteDetails.amount < 0 ? styles.negative : ''}>
+                  {transactionToDeleteDetails.amount < 0 ? `- R$` : `R$`}{' '}
+                  {Math.abs(transactionToDeleteDetails.amount).toFixed(2).replace('.', ',')}
+                </span>
+              </p>
+              <p>
+                <strong>Data:</strong> {transactionToDeleteDetails.date}
+              </p>
             </div>
             <div className={styles.modalActions}>
               <Button type="button" variant="secondary" onClick={handleCloseDeleteModal}>
                 Cancelar
               </Button>
-              <Button type="button" variant="danger" onClick={handleConfirmDelete}> {/* Adicione um variant="danger" no seu botão */}
+              <Button type="button" variant="danger" onClick={handleConfirmDelete}>
                 Excluir
               </Button>
             </div>
           </div>
         </Modal>
       )}
-
     </div>
   );
 };
