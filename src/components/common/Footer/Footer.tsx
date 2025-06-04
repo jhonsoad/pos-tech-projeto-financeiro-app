@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
           <h3 className={styles.columnTitle}>Desenvolvido por Alura</h3>
           <Link href="/">
             <Image
-              src="/logo-branco.svg" // Reutilizando a logo, ou adicione uma logo diferente para o footer se tiver
+              src="/logo-branco.svg"
               alt="ByteBank Logo"
               width={145}
               height={32}
