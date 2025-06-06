@@ -98,22 +98,21 @@ Certifique-se de ter o [Node.js](https://nodejs.org/en/download/) (versão 18.x 
 
 ## 🎥 Demonstração
 
-(https://youtu.be/LdPg9cIMPMs)
+https://youtu.be/LdPg9cIMPMs
 
 ---
 
 ## 👨‍💻 Desenvolvido por
 
 * **Jhonatas Magalhães**
-    * [https://www.linkedin.com/in/jhonatas-magalhaes/]
-    * [https://github.com/jhonsoad]
+    * [LinkedIn] https://www.linkedin.com/in/jhonatas-magalhaes/
+    * [Github] https://github.com/jhonsoad
 
 ---
 
-## ⚠️ Observações e Melhorias Futuras (Opcional)
+## ⚠️ Observações e Melhorias Futuras
 
 * **Persistência de Dados:** Atualmente, os dados são armazenados no `localStorage` do navegador. Para uma aplicação em produção, seria necessário integrar com um backend e um banco de dados.
-* **Melhoria na UX de Edição:** A edição de transações utiliza um `prompt()` nativo para simplificar. Uma melhoria futura seria implementar um modal de edição com um formulário dedicado para uma melhor experiência do usuário.
 * **Validações mais Robustas:** Implementar validações de formulário mais complexas e feedback visual para o usuário.
 * **Filtros e Ordenação:** Adicionar opções para filtrar transações por tipo, data ou ordenar a lista.
 * **Detalhes da Transação:** Criar uma página ou modal para visualizar detalhes de cada transação (se houvesse mais campos como descrição, categoria, etc.).
