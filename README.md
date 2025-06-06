@@ -14,7 +14,7 @@ A aplicação oferece as seguintes funcionalidades principais:
 
 * **Home Page:**
     * Pagina Inicial do Byte Bank com botão de Login.
-    * Exibição clara do saldo atual da conta corrente.
+    * Vantagens ao abrir uma conta na Byte Bank.
 * **Dashboard Page:**
     * Boas-vindas personalizadas ao usuário.
     * Exibição clara do saldo atual da conta corrente.
@@ -69,7 +69,7 @@ Certifique-se de ter o [Node.js](https://nodejs.org/en/download/) (versão 18.x 
 1.  **Clone o repositório:**
 
     ```bash
-    git clone (https://github.com/jhonsoad/pos-tech-projeto-financeiro-app.git)
+    git clone https://github.com/jhonsoad/pos-tech-projeto-financeiro-app.git
     ```
 
 2.  **Navegue até o diretório do projeto:**
@@ -105,8 +105,8 @@ Certifique-se de ter o [Node.js](https://nodejs.org/en/download/) (versão 18.x 
 ## 👨‍💻 Desenvolvido por
 
 * **Jhonatas Magalhães**
-    * [Seu LinkedIn (https://www.linkedin.com/in/jhonatas-magalhaes/)]
-    * [Seu GitHub (https://github.com/jhonsoad)]
+    * [https://www.linkedin.com/in/jhonatas-magalhaes/]
+    * [https://github.com/jhonsoad]
 
 ---
 
