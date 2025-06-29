@@ -140,7 +140,7 @@ export const StatementCard: React.FC<StatementCardProps> = ({ items, onDeleteTra
                 </div>
               </div>
 
-              <hr />
+              <hr className={styles.hr}/>
             </div>
           ))
         )}
