@@ -26,4 +26,4 @@ jobs:
 
     - name: Invalidate Cache CDN
       run: |
-        aws cloudfront create-invalidation --distribuition-id ${{ secrets.CDN_ID }} --paths "/"
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.CDN_ID }} --paths "/"
